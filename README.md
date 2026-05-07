@@ -81,11 +81,9 @@ python main.py --mode synthetic --method all
 
 ## Results (synthetic data example)
 
-| Method | Precision | Recall | F1 Score | Runtime |
-|--------|-----------|--------|----------|---------|
-| Z-score | 0.71 | 0.84 | 0.77 | <1 s |
-| Isolation Forest | 0.83 | 0.79 | 0.81 | ~2 s |
-| LSTM Autoencoder | 0.87 | 0.82 | 0.84 | ~30 s |
+| Method | Precision | Recall | F1 Score |
+|--------|-----------|--------|----------|
+| Isolation Forest | 0.53 | 0.28 | 0.36 |
 
 *Results vary by dataset and injected anomaly type. See `reports/` for detailed plots.*
 
