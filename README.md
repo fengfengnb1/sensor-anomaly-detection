@@ -61,7 +61,7 @@ cp NAB/data/realKnownCause/machine_temperature_system_failure.csv data/raw/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/sensor-anomaly-detection.git
+git clone https://github.com/fengfengnb1/sensor-anomaly-detection.git
 cd sensor-anomaly-detection
 
 # 2. Install dependencies
@@ -70,8 +70,8 @@ pip install -r requirements.txt
 # 3. Run with synthetic data (no download needed)
 python main.py --mode synthetic
 
-# 4. Run with your own CSV
-python main.py --input data/raw/your_sensor_data.csv --channel temperature
+# 4. Run with CSV
+python main.py --input data/raw/sensor_data.csv --channel temperature
 
 # 5. Run all three detection methods and compare
 python main.py --mode synthetic --method all
@@ -81,11 +81,11 @@ python main.py --mode synthetic --method all
 
 ## Results
 
-### Sensor overview — raw signal with anomaly regions
+### Sensor overview：raw signal with anomaly regions
 
 ![Sensor overview](reports/figures/sensor_overview.png)
 
-### Detection results — Isolation Forest
+### Detection results： Isolation Forest
 
 ![Detection results](reports/figures/detection_comparison.png)
 
@@ -96,6 +96,10 @@ python main.py --mode synthetic --method all
 | Method | Precision | Recall | F1 Score |
 |--------|-----------|--------|----------|
 | Isolation Forest | 0.53 | 0.28 | 0.36 |
+
+1. The F1 score reflects performance under data imbalance; since the model was trained without labels, it is difficult to assess based solely on feature density.
+2. The contamination parameter was set to 0.03. Adding Z-scores as a
+baseline and using LSTM to handle time-series patterns can improve the overall recall rate.
 
 ---
 
@@ -126,5 +130,5 @@ Python 3.9+ · See `requirements.txt` for full list.
 
 ## Author
 
-**Hongfeng Li** — M.Sc. Electrical Engineering and Information Technology, University of Bremen  
+**Hongfeng Li**   M.Sc. Electrical Engineering and Information Technology, University of Bremen  
 hongfeng.li09@outlook.com
