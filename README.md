@@ -2,13 +2,13 @@
 
 **End-to-end time-series anomaly detection pipeline for multi-channel sensor data.**
 
-This project implements and compares three tiers of anomaly detection methods — statistical, machine learning, and deep learning — applied to sensor data streams. The pipeline covers the full workflow from raw data ingestion to evaluation reports.
+This project implemented three detection methods and applied them to sensor data streams, while also comparing these methods. The process covered the entire workflow, from raw data collection to the generation of evaluation reports.
 
 ---
 
 ## Motivation
 
-Modern industrial and IoT systems generate continuous sensor streams where undetected anomalies can indicate equipment failure, process drift, or measurement errors. This project demonstrates a structured, reproducible approach to anomaly detection that mirrors real-world data engineering workflows.
+Current advancements in industrial and IoT systems, as well as artificial intelligence, generate a continuous stream of sensor data, in which undetected anomalies can lead to equipment failures, process deviations, or measurement errors. This project presents a structured and effective anomaly detection method.
 
 ---
 
@@ -79,15 +79,23 @@ python main.py --mode synthetic --method all
 
 ---
 
-## Results (synthetic data example)
+## Results
 
-| Method | Precision | Recall | F1 Score | Runtime |
-|--------|-----------|--------|----------|---------|
-| Z-score | 0.71 | 0.84 | 0.77 | <1 s |
-| Isolation Forest | 0.83 | 0.79 | 0.81 | ~2 s |
-| LSTM Autoencoder | 0.87 | 0.82 | 0.84 | ~30 s |
+### Sensor overview — raw signal with anomaly regions
 
-*Results vary by dataset and injected anomaly type. See `reports/` for detailed plots.*
+![Sensor overview](reports/figures/sensor_overview.png)
+
+### Detection results — Isolation Forest
+
+![Detection results](reports/figures/detection_comparison.png)
+
+### Method performance
+
+![Method comparison](reports/figures/method_comparison.png)
+
+| Method | Precision | Recall | F1 Score |
+|--------|-----------|--------|----------|
+| Isolation Forest | 0.53 | 0.28 | 0.36 |
 
 ---
 
