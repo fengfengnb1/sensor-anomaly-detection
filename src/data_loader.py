@@ -61,7 +61,8 @@ def generate_synthetic_data(
         "humidity": humidity,
         "anomaly_label": labels,
     }
-    return pd.DataFrame(data)
+    df = pd.DataFrame(data)
+    return df.set_index("timestamp")
 
 
 # File loader 

@@ -27,7 +27,6 @@ from src.feature_engineering import (
 )
 from src.anomaly_detection import (
     IsolationForestDetector,
-    LSTMAutoencoderDetector,
     ZScoreDetector,
 )
 from src.visualization import (
@@ -76,6 +75,8 @@ def run(
     print("\n[1/5] Loading data...")
     if mode == "synthetic":
         df = generate_synthetic_data()
+        if 'timestamp' in df.columns:
+             df = df.set_index('timestamp')
         print(f"  Generated synthetic data: {len(df):,} timesteps, {len(sensor_cols)} channels")
     elif mode == "file" and input_path:
         df = load_csv(input_path)
@@ -150,28 +151,7 @@ def run(
             results.append(score)
             print(f"  Isolation Forest → F1: {score['f1']:.4f}  ({elapsed:.2f}s)")
 
-    # Tier 3: LSTM Autoencoder
-    if "lstm" in run_methods:
-        try:
-            t0 = time.time()
-            detector = LSTMAutoencoderDetector(seq_len=30, epochs=30)
-            detector.fit(X)
-            preds = detector.predict(X)
-            errors = detector.reconstruction_errors(X)
-            elapsed = time.time() - t0
-            predictions["lstm_autoencoder"] = preds
-
-            plot_reconstruction_error(
-                df, errors, detector._threshold,
-                save_path=output_dir / "lstm_reconstruction_error.png" if save_figures else None,
-            )
-            if y_true is not None:
-                score = detector.score(X, y_true)
-                results.append(score)
-                print(f"  LSTM Autoencoder → F1: {score['f1']:.4f}  ({elapsed:.2f}s)")
-        except ImportError as e:
-            print(f"  LSTM skipped: {e}")
-
+ 
     # ── 5. Visualize ──────────────────────────────────────────────
     print("\n[5/5] Generating visualizations...")
 
