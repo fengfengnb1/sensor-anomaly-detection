@@ -8,7 +8,7 @@ Usage examples
 # Run with synthetic data (no download needed)
 python main.py --mode synthetic
 
-# Run all three methods
+# Run two of the three methods
 python main.py --mode synthetic --method all
 
 # Run on your own CSV file
