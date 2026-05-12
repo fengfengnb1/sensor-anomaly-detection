@@ -9,7 +9,7 @@ import pandas as pd
 from pathlib import Path
 
 
-# ── Synthetic data ──────────────────────────────────────────────────────────
+# Synthetic data 
 
 def generate_synthetic_data(
     n_points: int = 2000,
@@ -64,7 +64,7 @@ def generate_synthetic_data(
     return pd.DataFrame(data)
 
 
-# ── File loader ─────────────────────────────────────────────────────────────
+# File loader 
 
 def load_csv(
     filepath: str | Path,
@@ -99,7 +99,7 @@ def load_csv(
     return df
 
 
-# ── Preprocessing ────────────────────────────────────────────────────────────
+# Preprocessing 
 
 def clean(df: pd.DataFrame, fill_method: str = "linear") -> pd.DataFrame:
     """
@@ -135,7 +135,7 @@ def validate(df: pd.DataFrame) -> None:
     Run basic data quality checks and print a summary report.
     Raises ValueError if critical issues are found.
     """
-    print("\n── Data validation ─────────────────────────────")
+    print("\n── Data validation")
     print(f"  Rows         : {len(df):,}")
     print(f"  Columns      : {list(df.columns)}")
 
@@ -154,4 +154,4 @@ def validate(df: pd.DataFrame) -> None:
         pct = 100 * n_anom / len(df)
         print(f"\n  Anomalies    : {int(n_anom):,} ({pct:.1f}%)")
 
-    print("────────────────────────────────────────────────\n")
+    print("──\n")

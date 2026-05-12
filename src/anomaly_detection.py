@@ -1,6 +1,4 @@
 """
-anomaly_detection.py
---------------------
 Three-tier anomaly detection:
     Tier 1 – Statistical  : ZScoreDetector
     Tier 2 – ML           : IsolationForestDetector
@@ -15,7 +13,6 @@ from sklearn.ensemble import IsolationForest
 from sklearn.metrics import classification_report, f1_score
 
 
-# ── Base class ───────────────────────────────────────────────────────────────
 
 class BaseDetector:
     """All detectors follow this interface."""
@@ -40,7 +37,7 @@ class BaseDetector:
         }
 
 
-# ── Tier 1: Z-score ──────────────────────────────────────────────────────────
+#  Tier 1: Z-score
 
 class ZScoreDetector(BaseDetector):
     """
@@ -82,7 +79,7 @@ class ZScoreDetector(BaseDetector):
         return (max_zscore > self.threshold).astype(int).values
 
 
-# ── Tier 2: Isolation Forest ─────────────────────────────────────────────────
+#  Tier 2: Isolation Forest 
 
 class IsolationForestDetector(BaseDetector):
     """
@@ -130,7 +127,7 @@ class IsolationForestDetector(BaseDetector):
         return -self._model.score_samples(X)
 
 
-# ── Tier 3: LSTM Autoencoder ─────────────────────────────────────────────────
+#  Tier 3: LSTM Autoencoder
 
 try:
     import torch

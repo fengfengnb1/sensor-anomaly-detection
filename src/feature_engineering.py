@@ -61,7 +61,7 @@ def add_lag_features(
             result[f"{col}_lag_{lag}"] = result[col].shift(lag)
         result[f"{col}_diff_1"] = result[col].diff(1)
 
-    return result.fillna(method="bfill")
+    return result.bfill().ffill()
 
 
 def add_zscore_features(
