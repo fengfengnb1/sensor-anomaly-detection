@@ -29,17 +29,17 @@ sensor-anomaly-detection/
 ├── src/
 │   ├── data_loader.py          # Data ingestion and preprocessing
 │   ├── feature_engineering.py  # Rolling statistics, lag features
-│   ├── anomaly_detection.py    # All three detection methods
+│   ├── anomaly_detection.py    # All three detection methods, but two of them was used
 │   ├── visualization.py        # Plotting and reporting
 │   └── pipeline.py             # End-to-end orchestration
 ├── data/
 │   ├── raw/                    # Original sensor CSV files
 │   └── processed/              # Cleaned, feature-enriched data
 ├── notebooks/
-│   └── exploration.ipynb       # EDA and method comparison
+│   └── exploration.ipynb       # My own observations
 ├── reports/
 │   └── figures/                # Generated plots
-├── main.py                     # CLI entry point
+├── main.py                     # entry point
 └── requirements.txt
 ```
 
