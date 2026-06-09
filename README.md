@@ -130,5 +130,5 @@ Python 3.9+ · See `requirements.txt` for full list.
 
 ## Author
 
-**Hongfeng Li**   M.Sc. Electrical Engineering and Information Technology, University of Bremen  
+**Hongfeng Li**   M.Sc. Electrical Engineering and Information Technology(Reading), University of Bremen  
 hongfeng.li09@outlook.com
